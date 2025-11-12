@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:saikhahstation/widgets/product_form.dart';
+import 'package:saikhahstation/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -11,6 +13,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // scaffold dengan AppBar dan body
     return Scaffold(
+      drawer: const LeftDrawer(),
       appBar: AppBar(
         title: const Text(
           'Football News',
@@ -129,13 +132,10 @@ class MyHomePage extends StatelessWidget {
                       padding: const EdgeInsets.all(12),
                     ),
                     onPressed: () {
-                      ScaffoldMessenger.of(context)
-                        ..hideCurrentSnackBar()
-                        ..showSnackBar(
-                          const SnackBar(
-                            content: Text("Kamu telah menekan tombol Create Product"),
-                          ),
-                        );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (ctx) => const ProductFormPage()),
+                      );
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
